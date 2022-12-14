@@ -1,4 +1,4 @@
-# sandbox-jpms-cdi.weld-jpa.hibernate-jpms
+# sandboxc-cdi.weld-jpa.hibernate-jpms
 environment for problems (and, hopefully, solutions) regarding the use of jmps together with cdi (weld) and jpa (hibernate)
 
 the environment consists of a simple maven multi project. it is a _multi_ project to make extension of the environment easy.
