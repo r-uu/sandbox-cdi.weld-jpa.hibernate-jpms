@@ -7,8 +7,7 @@ import jakarta.enterprise.inject.spi.CDI;
 import jakarta.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
-class SandboxRunnerCDIWeldJPAHibernateJPMS
+@Slf4j class SandboxRunnerCDIWeldJPAHibernateJPMS
 {
 	@Inject private ItemService itemService;
 
