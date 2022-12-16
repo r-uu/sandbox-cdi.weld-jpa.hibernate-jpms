@@ -2,14 +2,12 @@ package de.ruu.lab.modules.common;
 
 import java.math.BigDecimal;
 
-import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.inject.se.SeContainerInitializer;
 import jakarta.enterprise.inject.spi.CDI;
 import jakarta.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@ApplicationScoped
 class SandboxRunnerCDIWeldJPAHibernateJPMS
 {
 	@Inject private ItemService itemService;
