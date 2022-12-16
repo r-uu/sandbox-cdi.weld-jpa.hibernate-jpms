@@ -1,9 +1,11 @@
 package de.ruu.lab.modules.common;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.nullValue;
+import static org.hamcrest.core.Is.is;
+
+import java.math.BigDecimal;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -13,17 +15,15 @@ import org.junit.jupiter.api.Test;
 import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.enterprise.inject.se.SeContainerInitializer;
 import jakarta.enterprise.inject.spi.CDI;
+import jakarta.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
 
-//@Disabled("TODO: test fails for unknown reason")
-@Slf4j class CDITest
+@Slf4j
+class SandboxTestCDIWeldJPAHibernateJPMS
 {
 	private static SeContainer seContainer;
 
-	// load greeter inside context
-	private CDITestContext context;
-	// load greeter directly
-	private CDIGreeter greeter;
+	@Inject private ItemService itemService;
 
 	@BeforeAll static void beforeAll()
 	{
@@ -48,26 +48,27 @@ import lombok.extern.slf4j.Slf4j;
 
 	@BeforeEach void beforeEach()
 	{
-		context = CDI.current().select(CDITestContext.class).get();
-		greeter = CDI.current().select(CDIGreeter.class).get();
+		itemService = CDI.current().select(ItemService.class).get();
 	}
 
-	@Test void testContextNotNull()
+	@Test void testJPA()
 	{
-		assertThat(context, is(not(nullValue())));
-		assertThat(greeter, is(not(nullValue())));
+		var name  = "jpa test at "  + System.currentTimeMillis();
+		var price = BigDecimal.ONE;
+
+		var item = Item.newInstance(name, price);
+
+		log.info("item before save {}", item);
+		itemService.save(item);
+		log.info("item after  save {}", item);
+
+		assertThat(item.getId   (), is(not(nullValue())));
+		assertThat(item.getName (), is(name));
+		assertThat(item.getPrice(), is(price));
 	}
 
-	@Test void testContextGreeterNotNull()
+	@Test void testCDI()
 	{
-		assertThat(context.greeter(), is(not(nullValue())));
-	}
-
-	@Test void testContextGreeterGreetNotNull()
-	{
-		assertThat(context.greeter().greet(), is(not(nullValue())));
-		log.debug("greetings from context.greeter {}", context.greeter().greet());
-		assertThat(greeter.greet(), is(not(nullValue())));
-		log.debug("greetings from greeter {}", greeter.greet());
+		assertThat(itemService, is(not(nullValue())));
 	}
 }

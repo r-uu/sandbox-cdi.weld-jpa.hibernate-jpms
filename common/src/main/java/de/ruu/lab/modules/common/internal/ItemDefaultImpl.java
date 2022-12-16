@@ -2,14 +2,17 @@ package de.ruu.lab.modules.common.internal;
 
 import java.math.BigDecimal;
 
+import de.ruu.lab.modules.common.Item;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import lombok.Data;
+import lombok.Getter;
+import lombok.ToString;
 
 @Entity
-@Data
-public class ItemDefaultImpl// implements Item
+@Getter
+@ToString
+public class ItemDefaultImpl implements Item
 {
 	@Id
 	@GeneratedValue
@@ -18,18 +21,15 @@ public class ItemDefaultImpl// implements Item
 	private String     name;
 	private BigDecimal price;
 
-////	ItemDefaultImpl() { }
-//	public ItemDefaultImpl() { }
-
 	public ItemDefaultImpl(String name, BigDecimal price)
 	{
 		this.name  = name;
 		this.price = price;
 	}
 
-//	public Long id() { return id; }
+	public Long id() { return id; }
 
-//	@Override public String name() { return name; }
-//
-//	@Override public BigDecimal price() { return price; }
+	@Override public String name() { return getName(); }
+
+	@Override public BigDecimal price() { return getPrice(); }
 }
