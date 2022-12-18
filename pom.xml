@@ -11,7 +11,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>common</module>
+        <module>item</module>
     </modules>
 
 	<properties>
