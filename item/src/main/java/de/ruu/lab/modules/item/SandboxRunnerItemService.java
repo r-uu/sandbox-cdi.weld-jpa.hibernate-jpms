@@ -7,7 +7,7 @@ import jakarta.enterprise.inject.spi.CDI;
 import jakarta.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
 
-@Slf4j class SandboxRunnerCDIWeldJPAHibernateJPMS
+@Slf4j class SandboxRunnerItemService
 {
 	@Inject private ItemService itemService;
 
@@ -21,7 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 		var item = Item.newInstance("cdi inject" + System.currentTimeMillis(), BigDecimal.ONE);
 
 		log.info("item before save {}", item);
-		itemService.save(item);
+		item = itemService.save(item);
 		log.info("item after  save {}", item);
 	}
 
@@ -37,7 +37,7 @@ import lombok.extern.slf4j.Slf4j;
 			log.debug("cdi container initialised");
 
 			log.info("looking up runner");
-			var runner = CDI.current().select(SandboxRunnerCDIWeldJPAHibernateJPMS.class).get();
+			var runner = CDI.current().select(SandboxRunnerItemService.class).get();
 			log.info("looked  up runner");
 
 			log.info("starting runner");

@@ -5,13 +5,14 @@
 
     <modelVersion>4.0.0</modelVersion>
 	<groupId>r-uu</groupId>
-    <artifactId>r-uu.sandbox-jpa.hibernate-jpms-cdi.weld</artifactId>
-    <name>r-uu.sandbox-jpa.hibernate-jpms-cdi.weld</name>
+    <artifactId>r-uu.sandbox-cdi.weld-jpa.hibernate-jpms</artifactId>
+    <name>r-uu.sandbox-cdi.weld-jpa.hibernate-jpms</name>
 	<version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>
         <module>item</module>
+        <module>inventory</module>
     </modules>
 
 	<properties>
@@ -37,6 +38,9 @@
                 <artifactId>hibernate-core</artifactId>
                 <version>6.1.6.Final</version>
 	            <exclusions>
+					<!-- exclusion avoids split packages for jandex -->
+					<!-- without exclusion of jandex in hibernate a no such method error is raised -->
+					<!-- with    exclusion an explicit dependency to jandex is needed (see below) -->
 					<exclusion>
 						<groupId>org.jboss</groupId>
 						<artifactId>jandex</artifactId>
@@ -52,7 +56,7 @@
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>1.18.24</version>
-<!--                <scope>provided</scope>-->
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>org.postgresql</groupId>
@@ -68,12 +72,6 @@
                 <groupId>org.jboss.weld.se</groupId>
                 <artifactId>weld-se-shaded</artifactId>
                 <version>5.1.0.Final</version>
-	            <exclusions>
-<!--					<exclusion>-->
-<!--						<groupId>*</groupId>-->
-<!--						<artifactId>*</artifactId>-->
-<!--					</exclusion>-->
-				</exclusions>
             </dependency>
 
             <dependency>
@@ -134,8 +132,6 @@
 						</manifestFile>
 						<manifestEntries>
 							<Automatic-Module-Name>slf4j.api</Automatic-Module-Name>
-						</manifestEntries>
-						<manifestEntries>
 							<Automatic-Module-Name>weld.se.shaded</Automatic-Module-Name>
 						</manifestEntries>
 					</archive>

@@ -11,10 +11,10 @@ import lombok.Getter;
 import lombok.ToString;
 
 @Entity
-@Table(name = "item")
+@Table(name = "item_item", schema = "item")
 @Getter
 @ToString
-public class ItemDefaultImpl implements Item
+public class ItemDefault implements Item
 {
 	@Id
 	@GeneratedValue
@@ -23,11 +23,13 @@ public class ItemDefaultImpl implements Item
 	private String     name;
 	private BigDecimal price;
 
-	public ItemDefaultImpl(String name, BigDecimal price)
+	public ItemDefault(String name, BigDecimal price)
 	{
 		this.name  = name;
 		this.price = price;
 	}
+
+	public ItemDefault(Item item) { this(item.name(), item.price()); }
 
 	public Long id() { return id; }
 

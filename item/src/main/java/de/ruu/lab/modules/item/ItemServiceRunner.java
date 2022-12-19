@@ -2,7 +2,7 @@ package de.ruu.lab.modules.item;
 
 import java.math.BigDecimal;
 
-import de.ruu.lab.modules.item.internal.ItemDefaultImpl;
+import de.ruu.lab.modules.item.internal.ItemDefault;
 import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.enterprise.inject.se.SeContainerInitializer;
 import jakarta.inject.Inject;
@@ -25,8 +25,8 @@ public class ItemServiceRunner
 	static void testCDI()
 	{
 //	Item item =
-		ItemDefaultImpl item =
-				new ItemDefaultImpl("item with cdi injection and jpa" + System.currentTimeMillis(), BigDecimal.ONE);
+		ItemDefault item =
+				new ItemDefault("item with cdi injection and jpa" + System.currentTimeMillis(), BigDecimal.ONE);
 
 		try (final SeContainer container = SeContainerInitializer.newInstance().initialize())
 		{
@@ -45,8 +45,8 @@ public class ItemServiceRunner
 	static void testJPA()
 	{
 //		Item item =
-		ItemDefaultImpl item =
-				new ItemDefaultImpl("item without cdi injection but with jpa" + System.currentTimeMillis(), BigDecimal.ONE);
+		ItemDefault item =
+				new ItemDefault("item without cdi injection but with jpa" + System.currentTimeMillis(), BigDecimal.ONE);
 
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
 		EntityManager entityManager = entityManagerFactory.createEntityManager();

@@ -1,8 +1,8 @@
-module de.ruu.lab.modules.item
+module de.ruu.lab.modules.inventory
 {
-	exports de.ruu.lab.modules.item;
-	opens   de.ruu.lab.modules.item;
-	opens   de.ruu.lab.modules.item.internal;
+	exports de.ruu.lab.modules.inventory;
+	opens   de.ruu.lab.modules.inventory;
+	opens   de.ruu.lab.modules.inventory.internal;
 
 	requires transitive jakarta.persistence;
 	requires lombok;
