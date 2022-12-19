@@ -1,4 +1,4 @@
-package de.ruu.lab.modules.common;
+package de.ruu.lab.modules.item;
 
 import java.math.BigDecimal;
 

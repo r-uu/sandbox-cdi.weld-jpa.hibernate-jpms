@@ -1,8 +1,8 @@
-package de.ruu.lab.modules.common.internal;
+package de.ruu.lab.modules.item.internal;
 
 import java.math.BigDecimal;
 
-import de.ruu.lab.modules.common.Item;
+import de.ruu.lab.modules.item.Item;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;

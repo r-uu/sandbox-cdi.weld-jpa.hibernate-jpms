@@ -1,8 +1,8 @@
-package de.ruu.lab.modules.common;
+package de.ruu.lab.modules.item;
 
 import java.math.BigDecimal;
 
-import de.ruu.lab.modules.common.internal.ItemDefaultImpl;
+import de.ruu.lab.modules.item.internal.ItemDefaultImpl;
 
 public interface Item
 {

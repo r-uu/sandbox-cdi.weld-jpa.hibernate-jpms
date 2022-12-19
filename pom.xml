@@ -122,6 +122,25 @@
                     <target>${maven.compiler.target}</target>
                 </configuration>
             </plugin>
+            <!-- manifest file with following entries suppress warnings about unstable module (names) -->
+            <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.3.0</version>
+				<configuration>
+					<archive>
+						<manifestFile>
+							${project.build.outputDirectory}/META-INF/MANIFEST.MF
+						</manifestFile>
+						<manifestEntries>
+							<Automatic-Module-Name>slf4j.api</Automatic-Module-Name>
+						</manifestEntries>
+						<manifestEntries>
+							<Automatic-Module-Name>weld.se.shaded</Automatic-Module-Name>
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>

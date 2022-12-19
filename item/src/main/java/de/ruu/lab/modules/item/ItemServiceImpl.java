@@ -1,6 +1,6 @@
-package de.ruu.lab.modules.common;
+package de.ruu.lab.modules.item;
 
-import de.ruu.lab.modules.common.internal.ItemDefaultImpl;
+import de.ruu.lab.modules.item.internal.ItemDefaultImpl;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 

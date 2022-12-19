@@ -1,4 +1,4 @@
-package de.ruu.lab.modules.common;
+package de.ruu.lab.modules.item;
 
 import jakarta.enterprise.inject.Disposes;
 import jakarta.enterprise.inject.Produces;

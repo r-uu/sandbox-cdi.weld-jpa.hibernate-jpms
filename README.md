@@ -5,4 +5,4 @@ the environment consists of a simple maven multi project. it is a _multi_ projec
 
 notice the location of ```beans.xml``` in ```src/test/resources``` because cdi is used in tests only.
 
-also notice the content of ```module-info.java```.
+also notice the content of ```module-info.java``` and configuration of maven-jar-plugin in root ```pom.xml```.
