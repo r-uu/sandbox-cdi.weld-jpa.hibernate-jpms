@@ -1,0 +1,28 @@
+version: "3.7"
+
+services:
+  modules_db:
+    container_name: ${modules_container_name}
+    hostname: ${modules_host_name}
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_DB: ${modules_db}
+      POSTGRES_USER: ${modules_user}
+      POSTGRES_PASSWORD: ${modules_password}
+    ports:
+      - ${modules_host_port}:${modules_container_port}
+    volumes:
+      - modules_data:/var/lib/postgresql/data
+      - ./database-init/init-taggable.sql:/docker-entrypoint-initdb.d/init-taggable.sql
+    networks:
+      - modules_network
+
+volumes:
+  modules_data:
+    driver: local
+
+networks:
+  modules_network:
+    driver: bridge
+    name: modules_network
