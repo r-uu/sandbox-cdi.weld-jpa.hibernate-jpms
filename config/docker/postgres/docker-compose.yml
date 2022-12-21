@@ -1,20 +1,20 @@
 version: "3.7"
 
 services:
-  modules_db:
-    container_name: ${modules_container_name}
-    hostname: ${modules_host_name}
+  postgres:
+    container_name: ${postgres_container_name}
+    hostname: ${postgres_host_name}
     image: postgres:latest
     restart: always
     environment:
-      POSTGRES_DB: ${modules_db}
-      POSTGRES_USER: ${modules_user}
-      POSTGRES_PASSWORD: ${modules_password}
+      POSTGRES_DB: ${postgres_db}
+      POSTGRES_USER: ${postgres_user}
+      POSTGRES_PASSWORD: ${postgres_password}
     ports:
-      - ${modules_host_port}:${modules_container_port}
+      - ${postgres_host_port}:${postgres_container_port}
     volumes:
       - modules_data:/var/lib/postgresql/data
-      - ./database-init/init-taggable.sql:/docker-entrypoint-initdb.d/init-taggable.sql
+      - ./database-init/init-modules.sql:/docker-entrypoint-initdb.d/init-modules.sql
     networks:
       - modules_network
 
