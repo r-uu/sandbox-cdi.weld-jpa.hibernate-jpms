@@ -9,7 +9,7 @@ public class EntityManagerProducer
 {
 	@Produces public EntityManager createEntityManager()
 	{
-		return Persistence.createEntityManagerFactory("default").createEntityManager();
+		return Persistence.createEntityManagerFactory("modules").createEntityManager();
 	}
 
 	public void close(@Disposes EntityManager entityManager) { entityManager.close(); }

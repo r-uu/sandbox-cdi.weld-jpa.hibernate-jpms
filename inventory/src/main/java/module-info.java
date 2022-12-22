@@ -3,6 +3,8 @@ module de.ruu.lab.modules.inventory
 	exports de.ruu.lab.modules.inventory;
 	opens   de.ruu.lab.modules.inventory;
 	opens   de.ruu.lab.modules.inventory.internal;
+	
+	requires de.ruu.lab.modules.item;
 
 	requires transitive jakarta.persistence;
 	requires lombok;

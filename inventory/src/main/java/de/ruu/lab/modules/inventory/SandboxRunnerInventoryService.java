@@ -1,5 +1,9 @@
 package de.ruu.lab.modules.inventory;
 
+import java.util.Optional;
+import java.util.Set;
+
+import jakarta.enterprise.event.Observes;
 import jakarta.enterprise.inject.se.SeContainerInitializer;
 import jakarta.enterprise.inject.spi.CDI;
 import jakarta.inject.Inject;
@@ -25,6 +29,28 @@ import lombok.extern.slf4j.Slf4j;
 
 	public static void main(String[] args)
 	{
+		Optional<Module> found =
+				ModuleLayer
+		        .boot()
+		        .modules()
+		        .stream()
+		        .filter(module -> module.getPackages().contains(Inject.class.getPackageName()))
+		        .findFirst();
+		
+		Class<?> type = Inject.class;
+		String packageNameOfType = type.getPackageName();
+		Set<Module> modules = ModuleLayer.boot().modules();
+		
+		for (Module module : modules)
+		{
+			if (module.getPackages().contains(packageNameOfType))
+			{
+				log.debug("type {} found in module {}", type.getName(), module.getName());
+			}
+		}
+
+		if (found.isPresent()) log.debug(found.get().getName());
+		//		log.debug(Inject.class.getModule().getName());
 		log.debug("cdi container initialisation, creating initialiser");
 		var initializer = SeContainerInitializer.newInstance();
 		log.debug("cdi container initialisation, created  initialiser");

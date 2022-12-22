@@ -9,7 +9,7 @@ import lombok.Getter;
 import lombok.ToString;
 
 @Entity
-@Table(name = "item_inventory", schema = "inventory")
+@Table(name = "item", schema = "inventory")
 @Getter
 @ToString
 public class ItemDefault implements Item

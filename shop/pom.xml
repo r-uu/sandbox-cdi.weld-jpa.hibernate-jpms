@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>r-uu.sandbox-cdi.weld-jpa.hibernate-jpms-inventory</artifactId>
+	<artifactId>r-uu.sandbox-cdi.weld-jpa.hibernate-jpms-shop</artifactId>
 
 	<parent>
 		<groupId>r-uu</groupId>
@@ -17,6 +17,23 @@
 			<groupId>r-uu</groupId>
 			<artifactId>r-uu.sandbox-cdi.weld-jpa.hibernate-jpms-item</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
+            <exclusions>
+				<exclusion>
+					<groupId>org.jboss.weld.se</groupId>
+					<artifactId>weld-se-shaded</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>r-uu</groupId>
+			<artifactId>r-uu.sandbox-cdi.weld-jpa.hibernate-jpms-inventory</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+            <exclusions>
+				<exclusion>
+					<groupId>org.jboss.weld.se</groupId>
+					<artifactId>weld-se-shaded</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
@@ -27,18 +44,6 @@
             <artifactId>log4j-slf4j-impl</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.hibernate.orm</groupId>
-            <artifactId>hibernate-core</artifactId>
-        </dependency>
-        <dependency>
-			<groupId>org.jboss</groupId>
-			<artifactId>jandex</artifactId>
-		</dependency>
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
@@ -46,6 +51,10 @@
             <groupId>org.jboss.weld.se</groupId>
             <artifactId>weld-se-shaded</artifactId>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.jboss.weld.se</groupId>-->
+<!--            <artifactId>weld-se-core</artifactId>-->
+<!--        </dependency>-->
 
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -54,6 +63,11 @@
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest</artifactId>
+        </dependency>
+        <dependency>
+        	<groupId>r-uu</groupId>
+        	<artifactId>r-uu.lab.modules.jpms.inventory</artifactId>
+        	<version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

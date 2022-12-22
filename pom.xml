@@ -13,6 +13,7 @@
     <modules>
         <module>item</module>
         <module>inventory</module>
+        <module>shop</module>
     </modules>
 
 	<properties>

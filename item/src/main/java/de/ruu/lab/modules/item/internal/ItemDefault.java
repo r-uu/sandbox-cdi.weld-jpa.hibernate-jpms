@@ -11,7 +11,7 @@ import lombok.Getter;
 import lombok.ToString;
 
 @Entity
-@Table(name = "item_item", schema = "item")
+@Table(name = "item", schema = "item")
 @Getter
 @ToString
 public class ItemDefault implements Item
