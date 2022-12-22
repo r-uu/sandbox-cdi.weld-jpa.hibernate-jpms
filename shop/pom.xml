@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -12,63 +13,48 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-    <dependencies>
+	<dependencies>
 		<dependency>
 			<groupId>r-uu</groupId>
 			<artifactId>r-uu.sandbox-cdi.weld-jpa.hibernate-jpms-item</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-            <exclusions>
-				<exclusion>
-					<groupId>org.jboss.weld.se</groupId>
-					<artifactId>weld-se-shaded</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>r-uu</groupId>
 			<artifactId>r-uu.sandbox-cdi.weld-jpa.hibernate-jpms-inventory</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-            <exclusions>
-				<exclusion>
-					<groupId>org.jboss.weld.se</groupId>
-					<artifactId>weld-se-shaded</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-slf4j-impl</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.weld.se</groupId>
-            <artifactId>weld-se-shaded</artifactId>
-        </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.jboss.weld.se</groupId>-->
-<!--            <artifactId>weld-se-core</artifactId>-->
-<!--        </dependency>-->
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-slf4j-impl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.weld.se</groupId>
+			<artifactId>weld-se-shaded</artifactId>
+<!--			<exclusions>-->
+<!--				<exclusion>-->
+<!--					<groupId>jakarta.inject</groupId>-->
+<!--					<artifactId>jakarta.inject-api</artifactId>-->
+<!--				</exclusion>-->
+<!--			</exclusions>-->
+		</dependency>
 
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest</artifactId>
-        </dependency>
-        <dependency>
-        	<groupId>r-uu</groupId>
-        	<artifactId>r-uu.lab.modules.jpms.inventory</artifactId>
-        	<version>1.0-SNAPSHOT</version>
-        </dependency>
-    </dependencies>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest</artifactId>
+		</dependency>
 
+	</dependencies>
 </project>

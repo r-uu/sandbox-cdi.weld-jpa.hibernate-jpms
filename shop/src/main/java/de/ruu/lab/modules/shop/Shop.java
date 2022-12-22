@@ -3,6 +3,8 @@ package de.ruu.lab.modules.shop;
 import java.math.BigDecimal;
 import java.util.Set;
 
+import de.ruu.lab.modules.inventory.InventoryService;
+import de.ruu.lab.modules.inventory.Item;
 import de.ruu.lab.modules.item.ItemCreated;
 import jakarta.enterprise.event.Observes;
 import jakarta.inject.Inject;
@@ -17,13 +19,10 @@ public class Shop
 		log.info("item created: {}", event.item());
 	}
 
-	@Inject private Inventory inventory;
+	@Inject private InventoryService inventory;
 
 	public void populateInventory()
 	{
-		inventory.add(Item.create("1", BigDecimal.ONE));
-		inventory.add(Item.create("2", BigDecimal.TWO));
-		inventory.add(Item.create("3", BigDecimal.valueOf(3L)));
 	}
 
 	public void clearInventory() { inventory.clear(); }

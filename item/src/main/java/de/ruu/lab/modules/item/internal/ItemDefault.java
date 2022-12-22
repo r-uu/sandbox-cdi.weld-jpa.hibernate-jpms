@@ -23,6 +23,9 @@ public class ItemDefault implements Item
 	private String     name;
 	private BigDecimal price;
 
+	/** required by jpa */
+	ItemDefault() { }
+
 	public ItemDefault(String name, BigDecimal price)
 	{
 		this.name  = name;

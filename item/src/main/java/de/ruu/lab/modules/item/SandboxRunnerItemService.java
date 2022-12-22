@@ -21,7 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 		var item = Item.newInstance("cdi inject" + System.currentTimeMillis(), BigDecimal.ONE);
 
 		log.info("item before save {}", item);
-		item = itemService.save(item);
+		item = itemService.create(item);
 		log.info("item after  save {}", item);
 	}
 

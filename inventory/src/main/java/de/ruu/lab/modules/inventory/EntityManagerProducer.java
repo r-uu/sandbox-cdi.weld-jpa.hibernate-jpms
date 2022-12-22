@@ -7,10 +7,12 @@ import jakarta.persistence.Persistence;
 
 public class EntityManagerProducer
 {
-	@Produces public EntityManager createEntityManager()
+	@Produces
+	@ModuleInventory
+	public EntityManager createEntityManager()
 	{
-		return Persistence.createEntityManagerFactory("modules").createEntityManager();
+		return Persistence.createEntityManagerFactory("modules_inventory").createEntityManager();
 	}
 
-	public void close(@Disposes EntityManager entityManager) { entityManager.close(); }
+	public void close(@Disposes @ModuleInventory EntityManager entityManager) { entityManager.close(); }
 }

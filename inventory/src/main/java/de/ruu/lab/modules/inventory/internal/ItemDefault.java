@@ -21,13 +21,20 @@ public class ItemDefault implements Item
 	private String name;
 	private long   stockQuantity;
 
+	/** required by jpa */
+	ItemDefault() { }
+
 	public ItemDefault(String name)
 	{
 		this.name          = name;
 		this.stockQuantity = 0L;
 	}
 
-	public ItemDefault(Item item) { this(item.name()); }
+	public ItemDefault(Item item)
+	{
+		this(item.name());
+		id = item.id();
+	}
 
 	public Long id() { return id; }
 

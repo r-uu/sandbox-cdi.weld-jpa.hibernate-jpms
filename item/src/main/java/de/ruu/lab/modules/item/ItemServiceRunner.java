@@ -33,7 +33,7 @@ public class ItemServiceRunner
 			log.debug("cdi container initialisation {}", container == null ? "unsuccessful" : "successful");
 			ItemServiceRunner itemServiceRunner = container.select(ItemServiceRunner.class).get();
 			log.info("item before save {}", item);
-			itemServiceRunner.itemService.save(item);
+			itemServiceRunner.itemService.create(item);
 			log.info("item after  save {}", item);
 		}
 		finally

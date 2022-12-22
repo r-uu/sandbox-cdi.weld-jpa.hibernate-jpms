@@ -4,6 +4,7 @@ import de.ruu.lab.modules.inventory.internal.ItemDefault;
 
 public interface Item
 {
+	Long id();
 	String name();
 	long stockQuantity();
 
