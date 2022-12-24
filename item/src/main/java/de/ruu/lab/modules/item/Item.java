@@ -6,6 +6,7 @@ import de.ruu.lab.modules.item.internal.ItemDefault;
 
 public interface Item
 {
+	Long id();
 	String name();
 	BigDecimal price();
 

@@ -7,6 +7,6 @@ public interface InventoryService
 	Item create(Item item);
 	Item find(long id);
 	Item update(Item item);
-	void delete(Item id);
+	void delete(Item item);
 	Set<Item> findAll();
 }

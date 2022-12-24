@@ -34,7 +34,7 @@ public class ItemDefault implements Item
 
 	public ItemDefault(Item item) { this(item.name(), item.price()); }
 
-	public Long id() { return id; }
+	@Override public Long id() { return id; }
 
 	@Override public String name() { return getName(); }
 

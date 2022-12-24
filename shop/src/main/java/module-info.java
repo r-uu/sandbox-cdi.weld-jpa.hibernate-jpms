@@ -3,6 +3,10 @@ module de.ruu.lab.modules.shop
 	exports de.ruu.lab.modules.shop;
 	opens   de.ruu.lab.modules.shop;
 
+	requires r.uu.lib.fx.comp;
+	requires javafx.controls;
+	requires javafx.fxml;
+
 	requires de.ruu.lab.modules.inventory;
 	requires de.ruu.lab.modules.item;
 	requires lombok;

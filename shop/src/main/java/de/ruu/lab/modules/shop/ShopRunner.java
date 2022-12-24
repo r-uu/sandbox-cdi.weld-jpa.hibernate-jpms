@@ -17,11 +17,11 @@ public class ShopRunner
 			log.debug("cdi container initialisation {}", container == null ? "unsuccessful" : "successful");
 			Shop shop = container.select(Shop.class).get();
 
-			log.info("shop inventory before populate\n{}", shop);
+			log.info("shop inventory before populate\n{}", shop.reportInventory());
 			shop.populateInventory();
-			log.info("shop inventory after  populate\n{}", shop);
+			log.info("shop inventory after  populate\n{}", shop.reportInventory());
 			shop.clearInventory();
-			log.info("shop inventory after  clearing\n{}", shop);
+			log.info("shop inventory after  clearing\n{}", shop.reportInventory());
 		}
 		finally
 		{

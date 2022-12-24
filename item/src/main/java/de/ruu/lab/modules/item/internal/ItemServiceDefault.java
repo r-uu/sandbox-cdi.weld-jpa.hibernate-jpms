@@ -43,7 +43,7 @@ public class ItemServiceDefault implements ItemService
 
 	@Override public Item update(Item item)
 	{
-		ItemDefault entity = new ItemDefault(item);
+		ItemDefault entity = entityManager.find(ItemDefault.class, item.id());
 
 		entityManager.getTransaction().begin();
 		entityManager.merge(entity);
@@ -55,7 +55,7 @@ public class ItemServiceDefault implements ItemService
 	@Override
 	public void delete(Item item)
 	{
-		ItemDefault entity = new ItemDefault(item);
+		ItemDefault entity = entityManager.find(ItemDefault.class, item.id());
 
 		entityManager.getTransaction().begin();
 		entityManager.remove(entity);

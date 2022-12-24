@@ -38,7 +38,7 @@ public class InventoryServiceDefault implements InventoryService
 
 	@Override public Item update(Item item)
 	{
-		ItemDefault entity = new ItemDefault(item);
+		ItemDefault entity = entityManager.find(ItemDefault.class, item.id());
 
 		entityManager.getTransaction().begin();
 		entityManager.merge(entity);
@@ -49,7 +49,7 @@ public class InventoryServiceDefault implements InventoryService
 
 	@Override public void delete(Item item)
 	{
-		ItemDefault entity = new ItemDefault(item);
+		ItemDefault entity = entityManager.find(ItemDefault.class, item.id());
 
 		entityManager.getTransaction().begin();
 		entityManager.remove(entity);
@@ -69,6 +69,8 @@ public class InventoryServiceDefault implements InventoryService
 	@SuppressWarnings("unused")
 	private void listen(@Observes ItemCreated event)
 	{
-		log.info("item created: {}", event.item());
+		log.info("item created: {}", event.item() + ", updating inventory");
+		Item item = create(Item.newInstance(event.item().name()));
+		log.info("item created: {}",       item   + ", updated  inventory");
 	}
 }
