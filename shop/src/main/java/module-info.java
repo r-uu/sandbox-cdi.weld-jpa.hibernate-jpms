@@ -10,12 +10,13 @@ module de.ruu.lab.modules.shop
 
 	requires javafx.controls;
 	requires javafx.fxml;
-	requires r.uu.lib.fx.comp;
 
-	requires de.ruu.lab.modules.inventory;
-	requires de.ruu.lab.modules.item;
 	requires static lombok;
 	// makes java package org.slf4j visible, org.slf4j is contained in slf4j.api jar file
 	requires slf4j.api;
 	requires weld.se.shaded;
+
+	requires r.uu.lib.fx.comp;
+	requires de.ruu.lab.modules.inventory;
+	requires de.ruu.lab.modules.item;
 }

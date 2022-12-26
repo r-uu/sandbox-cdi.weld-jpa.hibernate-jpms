@@ -26,7 +26,7 @@
             <artifactId>hibernate-core</artifactId>
         </dependency>
         <dependency>
-			<groupId>org.jboss</groupId>
+			<groupId>io.smallrye</groupId>
 			<artifactId>jandex</artifactId>
 		</dependency>
         <dependency>
@@ -52,4 +52,24 @@
         </dependency>
     </dependencies>
 
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+<!--						<mainClass>de.ruu.lab.modules.item.ItemServiceRunner</mainClass>-->
+						<manifestFile>
+							${project.build.outputDirectory}/META-INF/MANIFEST.MF
+						</manifestFile>
+						<manifestEntries>
+							<Automatic-Module-Name>slf4j.api</Automatic-Module-Name>
+							<Automatic-Module-Name>weld.se.shaded</Automatic-Module-Name>
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
