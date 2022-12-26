@@ -7,7 +7,7 @@ module de.ruu.lab.modules.inventory
 	requires de.ruu.lab.modules.item;
 
 	requires transitive jakarta.persistence;
-	requires lombok;
+	requires static lombok;
 	// makes java package org.slf4j visible, org.slf4j is contained in slf4j.api jar file
 	requires slf4j.api;
 	requires weld.se.shaded;
