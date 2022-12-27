@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE xml>
+<beans xmlns="https://jakarta.ee/xml/ns/jakartaee"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/beans_3_0.xsd"
+       bean-discovery-mode="all">
+	<scan>
+		<!-- don't scan org classes -->
+		<exclude name="org.**" />
+		<exclude name="de.mt.replatforming.modules.common.internal.**" />
+		<exclude name="de.mt.replatforming.modules.inventory.internal.**" />
+		<exclude name="de.mt.replatforming.modules.order.internal.**" />
+		<exclude name="de.mt.replatforming.modules.shop.internal.**" />
+	</scan>
+</beans>
