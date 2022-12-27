@@ -14,7 +14,21 @@
 	</parent>
 
 	<dependencies>
-
+		<dependency>
+			<groupId>r-uu</groupId>
+			<artifactId>r-uu.lib.fx.comp</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>r-uu</groupId>
+			<artifactId>r-uu.sandbox-cdi.weld-jpa.hibernate-jpms-item</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>r-uu</groupId>
+			<artifactId>r-uu.sandbox-cdi.weld-jpa.hibernate-jpms-inventory</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-api</artifactId>
@@ -36,22 +50,6 @@
 <!--					<artifactId>jakarta.inject-api</artifactId>-->
 <!--				</exclusion>-->
 <!--			</exclusions>-->
-		</dependency>
-
-		<dependency>
-			<groupId>r-uu.lib.fx</groupId>
-			<artifactId>ruu.lib.fx.comp</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>r-uu</groupId>
-			<artifactId>r-uu.sandbox-cdi.weld-jpa.hibernate-jpms-item</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>r-uu</groupId>
-			<artifactId>r-uu.sandbox-cdi.weld-jpa.hibernate-jpms-inventory</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
 		<dependency>

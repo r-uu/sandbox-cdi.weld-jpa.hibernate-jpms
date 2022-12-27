@@ -4,9 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-	<groupId>r-uu</groupId>
-    <artifactId>r-uu.sandbox-cdi.weld-jpa.hibernate-jpms</artifactId>
-    <name>r-uu.sandbox-cdi.weld-jpa.hibernate-jpms</name>
+	<groupId>r-uu.sandbox-cdi.weld-jpa.hibernate-jpms</groupId>
+    <artifactId>ruu.sandbox_cdi.weld_jpa.hibernate_jpms</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
@@ -17,18 +16,32 @@
     </modules>
 
 	<properties>
-		<maven.compiler.source>19</maven.compiler.source>
-		<maven.compiler.target>19</maven.compiler.target>
+
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<java.version>19</java.version>
+
+		<!-- maven compiler does not work with combination of source/target and release,
+		     so release will not be used until that is fixed
+		 -->
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+
+		<maven.compiler.plugin.version>3.10.1</maven.compiler.plugin.version>
+		<maven.dependency.plugin.version>3.3.0</maven.dependency.plugin.version>
+
 	</properties>
 
     <dependencyManagement>
+
         <dependencies>
+
             <dependency>
                 <groupId>org.apache.logging.log4j</groupId>
                 <artifactId>log4j-api</artifactId>
                 <version>2.19.0</version>
             </dependency>
+			<!-- necessary for lombok's Slf4j-log mechanism -->
             <dependency>
                 <groupId>org.apache.logging.log4j</groupId>
                 <artifactId>log4j-slf4j-impl</artifactId>
