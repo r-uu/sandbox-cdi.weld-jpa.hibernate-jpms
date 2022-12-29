@@ -54,11 +54,14 @@
 	            <exclusions>
 					<!-- exclusion avoids split packages for jandex -->
 					<!-- without exclusion of jandex in hibernate a no such method error is raised -->
-					<!-- with    exclusion an explicit dependency to jandex is needed (see below) -->
+					<!-- with    exclusion an explicit dependency to jandex is needed (see below)  -->
+					<!-- note that jandex is referenced with groupId io.smallrye actually          -->
 					<exclusion>
 						<groupId>org.jboss</groupId>
 						<artifactId>jandex</artifactId>
 					</exclusion>
+					<!-- exclusion avoids split packages for jakarta.inject                                -->
+					<!-- without exclusion of jakarta.inject in hibernate a no such method error is raised -->
 					<exclusion>
 						<groupId>jakarta.inject</groupId>
 						<artifactId>jakarta.inject-api</artifactId>
@@ -100,6 +103,7 @@
                 <scope>test</scope>
             </dependency>
         </dependencies>
+
     </dependencyManagement>
 
     <build>
@@ -139,21 +143,21 @@
                 </configuration>
             </plugin>
             <!-- manifest file with following entries suppress warnings about unstable module (names) -->
-            <plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<configuration>
-					<archive>
-						<manifestFile>
-							${project.build.outputDirectory}/META-INF/MANIFEST.MF
-						</manifestFile>
-						<manifestEntries>
-							<Automatic-Module-Name>slf4j.api</Automatic-Module-Name>
-							<Automatic-Module-Name>weld.se.shaded</Automatic-Module-Name>
-						</manifestEntries>
-					</archive>
-				</configuration>
-			</plugin>
+<!--            <plugin>-->
+<!--				<groupId>org.apache.maven.plugins</groupId>-->
+<!--				<artifactId>maven-jar-plugin</artifactId>-->
+<!--				<configuration>-->
+<!--					<archive>-->
+<!--						<manifestFile>-->
+<!--							${project.build.outputDirectory}/META-INF/MANIFEST.MF-->
+<!--						</manifestFile>-->
+<!--						<manifestEntries>-->
+<!--							<Automatic-Module-Name>slf4j.api</Automatic-Module-Name>-->
+<!--							<Automatic-Module-Name>weld.se.shaded</Automatic-Module-Name>-->
+<!--						</manifestEntries>-->
+<!--					</archive>-->
+<!--				</configuration>-->
+<!--			</plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>

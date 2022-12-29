@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>r-uu.sandbox-cdi.weld-jpa.hibernate-jpms-item</artifactId>
+    <artifactId>ruu.sandbox_cdi.weld_jpa.hibernate_jpms_item</artifactId>
 
     <parent>
         <groupId>r-uu.sandbox-cdi.weld-jpa.hibernate-jpms</groupId>
@@ -74,4 +74,5 @@
 <!--			</plugin>-->
 <!--		</plugins>-->
 <!--	</build>-->
+
 </project>

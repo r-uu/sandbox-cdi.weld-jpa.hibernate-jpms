@@ -16,7 +16,9 @@ module de.ruu.lab.modules.shop
 	requires slf4j.api;
 	requires weld.se.shaded;
 
-	requires r.uu.lib.fx.comp;
+	requires ruu.lib.fx.comp;
+	requires ruu.lib.fx.core;
+
 	requires de.ruu.lab.modules.inventory;
 	requires de.ruu.lab.modules.item;
 }

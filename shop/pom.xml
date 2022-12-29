@@ -5,11 +5,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>r-uu.sandbox-cdi.weld-jpa.hibernate-jpms-shop</artifactId>
+	<artifactId>ruu.sandbox_cdi.weld_jpa.hibernate_jpms_shop</artifactId>
 
 	<parent>
-		<groupId>r-uu</groupId>
-		<artifactId>r-uu.sandbox-cdi.weld-jpa.hibernate-jpms</artifactId>
+		<groupId>r-uu.sandbox-cdi.weld-jpa.hibernate-jpms</groupId>
+		<artifactId>ruu.sandbox_cdi.weld_jpa.hibernate_jpms</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
@@ -30,12 +30,6 @@
 		<dependency>
 			<groupId>org.jboss.weld.se</groupId>
 			<artifactId>weld-se-shaded</artifactId>
-<!--			<exclusions>-->
-<!--				<exclusion>-->
-<!--					<groupId>jakarta.inject</groupId>-->
-<!--					<artifactId>jakarta.inject-api</artifactId>-->
-<!--				</exclusion>-->
-<!--			</exclusions>-->
 		</dependency>
 
 		<dependency>
@@ -44,13 +38,18 @@
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
-			<groupId>r-uu</groupId>
-			<artifactId>r-uu.sandbox-cdi.weld-jpa.hibernate-jpms-item</artifactId>
+			<groupId>r-uu.lib.fx</groupId>
+			<artifactId>ruu.lib.fx.core</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
-			<groupId>r-uu</groupId>
-			<artifactId>r-uu.sandbox-cdi.weld-jpa.hibernate-jpms-inventory</artifactId>
+			<groupId>r-uu.sandbox-cdi.weld-jpa.hibernate-jpms</groupId>
+			<artifactId>ruu.sandbox_cdi.weld_jpa.hibernate_jpms_item</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>r-uu.sandbox-cdi.weld-jpa.hibernate-jpms</groupId>
+			<artifactId>ruu.sandbox_cdi.weld_jpa.hibernate_jpms_inventory</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
@@ -67,20 +66,62 @@
 
 	<build>
 		<plugins>
+
+<!--			<plugin>-->
+<!--				<artifactId>maven-dependency-plugin</artifactId>-->
+<!--				<executions>-->
+<!--					<execution>-->
+<!--						<phase>prepare-package</phase>-->
+<!--						<goals>-->
+<!--							<goal>copy-dependencies</goal>-->
+<!--						</goals>-->
+<!--						<configuration>-->
+<!--							<outputDirectory>${project.build.directory}/lib</outputDirectory>-->
+<!--						</configuration>-->
+<!--					</execution>-->
+<!--				</executions>-->
+<!--			</plugin>-->
+
+<!--			<plugin>-->
+<!--				<groupId>org.apache.maven.plugins</groupId>-->
+<!--				<artifactId>maven-jar-plugin</artifactId>-->
+<!--				<configuration>-->
+<!--					<archive>-->
+<!--						<manifest>-->
+<!--							<addClasspath>true</addClasspath>-->
+<!--							<classpathPrefix>lib</classpathPrefix>-->
+<!--							<mainClass>de.ruu.lab.modules.shop.ui.fx.ShopAppRunner</mainClass>-->
+<!--						</manifest>-->
+<!--					</archive>-->
+<!--				</configuration>-->
+<!--			</plugin>-->
+
 			<plugin>
-				<artifactId>maven-dependency-plugin</artifactId>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>3.4.2</version>
 				<executions>
 					<execution>
 						<phase>package</phase>
 						<goals>
-							<goal>copy-dependencies</goal>
+							<goal>single</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>${project.build.directory}/lib</outputDirectory>
+							<finalName>ShopAppRunner</finalName>
+							<appendAssemblyId>false</appendAssemblyId>
+							<archive>
+								<manifest>
+									<mainClass>de.ruu.lab.modules.shop.ui.fx.ShopAppRunner</mainClass>
+								</manifest>
+							</archive>
+							<descriptorRefs>
+								<descriptorRef>jar-with-dependencies</descriptorRef>
+							</descriptorRefs>
 						</configuration>
 					</execution>
 				</executions>
 			</plugin>
+
 		</plugins>
 	</build>
 

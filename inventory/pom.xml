@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>r-uu.sandbox-cdi.weld-jpa.hibernate-jpms-inventory</artifactId>
+	<artifactId>ruu.sandbox_cdi.weld_jpa.hibernate_jpms_inventory</artifactId>
 
 	<parent>
 		<groupId>r-uu.sandbox-cdi.weld-jpa.hibernate-jpms</groupId>
@@ -42,6 +42,12 @@
             <groupId>org.jboss.weld.se</groupId>
             <artifactId>weld-se-shaded</artifactId>
         </dependency>
+        
+        <dependency>
+			<groupId>r-uu.sandbox-cdi.weld-jpa.hibernate-jpms</groupId>
+			<artifactId>ruu.sandbox_cdi.weld_jpa.hibernate_jpms_item</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 
         <dependency>
             <groupId>org.junit.jupiter</groupId>
