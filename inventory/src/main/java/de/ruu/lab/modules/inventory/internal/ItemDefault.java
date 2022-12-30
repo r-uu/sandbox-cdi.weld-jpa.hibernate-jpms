@@ -8,7 +8,7 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.ToString;
 
-@Entity
+@Entity(name = "itemInventory")
 @Table(name = "item", schema = "inventory")
 @Getter
 @ToString

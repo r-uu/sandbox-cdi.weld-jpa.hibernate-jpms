@@ -6,7 +6,15 @@ module de.ruu.lab.modules.shop
 	exports de.ruu.lab.modules.shop.ui.fx.inventory;
 	exports de.ruu.lab.modules.shop.ui.fx.item;
 	exports de.ruu.lab.modules.shop.ui.fx.order;
+	exports de.ruu.lab.modules.shop.ui.fx.item.edit to javafx.graphics;
+
 	opens   de.ruu.lab.modules.shop;
+	opens   de.ruu.lab.modules.shop.ui.fx           to weld.se.shaded;
+	opens   de.ruu.lab.modules.shop.ui.fx.catalog   to weld.se.shaded;
+	opens   de.ruu.lab.modules.shop.ui.fx.inventory to weld.se.shaded;
+	opens   de.ruu.lab.modules.shop.ui.fx.item      to weld.se.shaded;
+	opens   de.ruu.lab.modules.shop.ui.fx.item.edit to weld.se.shaded;
+	opens   de.ruu.lab.modules.shop.ui.fx.order     to weld.se.shaded;
 
 	requires javafx.controls;
 	requires javafx.fxml;

@@ -1,16 +1,15 @@
 package de.ruu.lab.modules.item.internal;
 
-import java.math.BigDecimal;
-
 import de.ruu.lab.modules.item.Item;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import java.math.BigDecimal;
 import lombok.Getter;
 import lombok.ToString;
 
-@Entity
+@Entity(name = "item")
 @Table(name = "item", schema = "item")
 @Getter
 @ToString
