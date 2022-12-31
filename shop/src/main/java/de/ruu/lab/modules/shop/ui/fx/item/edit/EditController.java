@@ -11,4 +11,9 @@ class EditController extends DefaultFXCViewController implements EditService
 
 	@Override public String name()  { return txtFldName .getText(); }
 	@Override public String price() { return txtFldPrice.getText(); }
+
+	@Override protected void initialize()
+	{
+		// empty implementation, do not call super.initialize() as that would throw ExceptionInInitializerError
+	}
 }

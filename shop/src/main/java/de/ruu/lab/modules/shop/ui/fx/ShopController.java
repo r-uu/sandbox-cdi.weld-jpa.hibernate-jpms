@@ -1,17 +1,13 @@
 package de.ruu.lab.modules.shop.ui.fx;
 
-import static de.ruu.lib.fx.FXUtil.getStage;
-
 import de.ruu.lab.modules.shop.ui.fx.catalog.Catalog;
 import de.ruu.lab.modules.shop.ui.fx.inventory.Inventory;
 import de.ruu.lab.modules.shop.ui.fx.item.Item;
 import de.ruu.lab.modules.shop.ui.fx.order.Order;
 import de.ruu.lib.fx.comp.DefaultFXCViewController;
 import jakarta.inject.Inject;
-import java.util.Optional;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -37,9 +33,6 @@ public class ShopController extends DefaultFXCViewController
 		nchrPnInventory.getChildren().add(inventory.getLocalRoot());
 		nchrPnItem     .getChildren().add(item     .getLocalRoot());
 		nchrPnItemOrder.getChildren().add(order    .getLocalRoot());
-
-		Optional<Stage> optional = getStage(nchrPnItem);
-		if (optional.isPresent()) optional.get().setTitle("shop");
 
 		log.debug("initialised");
 	}
