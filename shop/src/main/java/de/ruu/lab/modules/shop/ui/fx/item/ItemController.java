@@ -3,10 +3,13 @@ package de.ruu.lab.modules.shop.ui.fx.item;
 import static javafx.scene.control.ButtonBar.ButtonData.OK_DONE;
 
 import de.ruu.lab.modules.item.Item;
+import de.ruu.lab.modules.item.ItemCreated;
 import de.ruu.lab.modules.item.ItemService;
 import de.ruu.lab.modules.shop.ui.fx.item.edit.Edit;
 import de.ruu.lab.modules.shop.ui.fx.item.edit.EditService;
 import de.ruu.lib.fx.comp.DefaultFXCViewController;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.event.Observes;
 import jakarta.inject.Inject;
 import java.math.BigDecimal;
 import java.util.Optional;
@@ -58,7 +61,6 @@ class ItemController extends DefaultFXCViewController
 		if (optional.isPresent())
 		{
 			Item item = itemService.create(optional.get());
-			tblVw.getItems().add(item);
 		}
 	}
 
@@ -76,5 +78,11 @@ class ItemController extends DefaultFXCViewController
 			return Item.newInstance(editService.name(), new BigDecimal(editService.price()));
 		}
 		return null;
+	}
+
+	private void listen(@Observes ItemCreated event)
+	{
+		log.info("received event - item created: {}, adding item to table", event.item());
+		tblVw.getItems().add(event.item());
 	}
 }

@@ -20,7 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 
 	void runCDI()
 	{
-		var item = Item.newInstance("cdi inject" + System.currentTimeMillis());
+		var item = Item.newInstance("cdi inject" + System.currentTimeMillis(), 0L);
 
 		log.info("item before save {}", item);
 		item = inventoryService.create(item);

@@ -5,8 +5,9 @@ import java.util.Set;
 
 import de.ruu.lab.modules.inventory.InventoryService;
 import de.ruu.lab.modules.inventory.Item;
+import de.ruu.lab.modules.inventory.ItemCreated;
 import de.ruu.lab.modules.inventory.ModuleInventory;
-import de.ruu.lab.modules.item.ItemCreated;
+import jakarta.enterprise.event.Event;
 import jakarta.enterprise.event.Observes;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
@@ -23,6 +24,8 @@ public class InventoryServiceDefault implements InventoryService
 	@ModuleInventory
 	private EntityManager entityManager;
 
+	@Inject private Event<ItemCreated> event;
+
 	@Override public Item create(Item item)
 	{
 		ItemDefault entity = new ItemDefault(item);
@@ -30,6 +33,8 @@ public class InventoryServiceDefault implements InventoryService
 		entityManager.getTransaction().begin();
 		entityManager.persist(entity);
 		entityManager.getTransaction().commit();
+
+		event.fire(new ItemCreatedDefault(entity));
 
 		return entity;
 	}
@@ -70,7 +75,7 @@ public class InventoryServiceDefault implements InventoryService
 	private void listen(@Observes ItemCreated event)
 	{
 		log.info("item created: {}", event.item() + ", updating inventory");
-		Item item = create(Item.newInstance(event.item().name()));
+		Item item = create(Item.newInstance(event.item().name(), 0L));
 		log.info("item created: {}",       item   + ", updated  inventory");
 	}
 }

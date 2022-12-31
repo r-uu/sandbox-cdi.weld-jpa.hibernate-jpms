@@ -76,6 +76,6 @@ public class ItemServiceDefault implements ItemService
 	@SuppressWarnings("unused")
 	private void listen(@Observes ItemCreated event)
 	{
-		log.info("item created: {}", event.item());
+		log.info("received event - item created: {}", event.item());
 	}
 }

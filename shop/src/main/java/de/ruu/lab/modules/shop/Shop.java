@@ -21,7 +21,7 @@ public class Shop
 	{
 		for (int i = 0; i < 10; i++)
 		{
-			inventory.create(Item.newInstance("item " + i));
+			inventory.create(Item.newInstance("item " + i, i));
 		}
 	}
 

@@ -24,15 +24,15 @@ public class ItemDefault implements Item
 	/** required by jpa */
 	ItemDefault() { }
 
-	public ItemDefault(String name)
+	public ItemDefault(String name, long stockQuantity)
 	{
 		this.name          = name;
-		this.stockQuantity = 0L;
+		this.stockQuantity = stockQuantity;
 	}
 
 	public ItemDefault(Item item)
 	{
-		this(item.name());
+		this(item.name(), item.stockQuantity());
 		id = item.id();
 	}
 
