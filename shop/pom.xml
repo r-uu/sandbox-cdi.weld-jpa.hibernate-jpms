@@ -67,35 +67,6 @@
 	<build>
 		<plugins>
 
-<!--			<plugin>-->
-<!--				<artifactId>maven-dependency-plugin</artifactId>-->
-<!--				<executions>-->
-<!--					<execution>-->
-<!--						<phase>prepare-package</phase>-->
-<!--						<goals>-->
-<!--							<goal>copy-dependencies</goal>-->
-<!--						</goals>-->
-<!--						<configuration>-->
-<!--							<outputDirectory>${project.build.directory}/lib</outputDirectory>-->
-<!--						</configuration>-->
-<!--					</execution>-->
-<!--				</executions>-->
-<!--			</plugin>-->
-
-<!--			<plugin>-->
-<!--				<groupId>org.apache.maven.plugins</groupId>-->
-<!--				<artifactId>maven-jar-plugin</artifactId>-->
-<!--				<configuration>-->
-<!--					<archive>-->
-<!--						<manifest>-->
-<!--							<addClasspath>true</addClasspath>-->
-<!--							<classpathPrefix>lib</classpathPrefix>-->
-<!--							<mainClass>de.ruu.lab.modules.shop.ui.fx.ShopAppRunner</mainClass>-->
-<!--						</manifest>-->
-<!--					</archive>-->
-<!--				</configuration>-->
-<!--			</plugin>-->
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-assembly-plugin</artifactId>
@@ -117,9 +88,9 @@
 							<descriptorRefs>
 								<descriptorRef>jar-with-dependencies</descriptorRef>
 							</descriptorRefs>
-							<descriptors>
-								<descriptor>pom-maven-assembly-descriptor.xml</descriptor>
-							</descriptors>
+<!--							<descriptors>-->
+<!--								<descriptor>pom-maven-assembly-descriptor.xml</descriptor>-->
+<!--							</descriptors>-->
 						</configuration>
 					</execution>
 				</executions>

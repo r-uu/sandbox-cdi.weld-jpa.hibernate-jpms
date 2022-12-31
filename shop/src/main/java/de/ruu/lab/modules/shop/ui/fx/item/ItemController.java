@@ -55,7 +55,11 @@ class ItemController extends DefaultFXCViewController
 		// wait for editor result
 		Optional<Item> optional = dialog.showAndWait();
 
-		if (optional.isPresent()) itemService.create(optional.get());
+		if (optional.isPresent())
+		{
+			Item item = itemService.create(optional.get());
+			tblVw.getItems().add(item);
+		}
 	}
 
 	private void onDelete()

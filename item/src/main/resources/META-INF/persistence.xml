@@ -13,10 +13,32 @@
             <property name="jakarta.persistence.jdbc.user"     value="modules" />
             <property name="jakarta.persistence.jdbc.password" value="modules" />
 
-<!--             <property name="jakarta.persistence.schema-generation.scripts.action" value="update"/> -->
+            <!--             <property name="jakarta.persistence.schema-generation.scripts.action" value="update"/> -->
             <property name="jakarta.persistence.schema-generation.scripts.create-target" value="./create.sql"/>
             <property name="jakarta.persistence.schema-generation.scripts.drop-target" value="./drop.sql"/>
- 
+
+            <property name="hibernate.hbm2ddl.auto" value="update" />
+            <property name="hibernate.show_sql"     value="true" />
+            <property name="hibernate.format_sql"   value="true" />
+        </properties>
+
+    </persistence-unit>
+
+    <!--
+        TODO: this is a hack to force "modules_inventory" persistence unit into the executable .jar of project shop
+    -->
+    <persistence-unit name="modules_inventory">
+
+        <properties>
+            <property name="jakarta.persistence.jdbc.driver"   value="org.postgresql.Driver"/>
+            <property name="jakarta.persistence.jdbc.url"      value="jdbc:postgresql://localhost:5433/modules" />
+            <property name="jakarta.persistence.jdbc.user"     value="modules" />
+            <property name="jakarta.persistence.jdbc.password" value="modules" />
+
+            <!--             <property name="jakarta.persistence.schema-generation.scripts.action" value="update"/> -->
+            <property name="jakarta.persistence.schema-generation.scripts.create-target" value="./create.sql"/>
+            <property name="jakarta.persistence.schema-generation.scripts.drop-target" value="./drop.sql"/>
+
             <property name="hibernate.hbm2ddl.auto" value="update" />
             <property name="hibernate.show_sql"     value="true" />
             <property name="hibernate.format_sql"   value="true" />
