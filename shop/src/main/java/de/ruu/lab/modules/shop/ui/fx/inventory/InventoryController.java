@@ -80,9 +80,12 @@ class InventoryController extends DefaultFXCViewController
 		return null;
 	}
 
-	private void listen(@Observes ItemCreated event)
+	private class Observer
 	{
-		log.info("received event - item created: {}, adding item to table", event.item());
-		tblVw.getItems().add(event.item());
+		private void listen(@Observes ItemCreated event)
+		{
+			log.info("received event - item created: {}, adding item to table", event.item());
+			tblVw.getItems().add(event.item());
+		}
 	}
 }
