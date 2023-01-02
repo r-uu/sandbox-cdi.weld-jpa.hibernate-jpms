@@ -72,10 +72,4 @@ public class ItemServiceDefault implements ItemService
 		TypedQuery<ItemDefault> allQuery = entityManager.createQuery(criteriaQuery);
 		return new HashSet<Item>(allQuery.getResultList());
 	}
-
-	@SuppressWarnings("unused")
-	private void listen(@Observes ItemCreated event)
-	{
-		log.info("received event - item created: {}", event.item());
-	}
 }

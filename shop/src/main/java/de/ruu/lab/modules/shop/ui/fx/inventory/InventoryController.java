@@ -80,7 +80,7 @@ class InventoryController extends DefaultFXCViewController
 		return null;
 	}
 
-	private class Observer
+	@ApplicationScoped private class Observer
 	{
 		private void listen(@Observes ItemCreated event)
 		{

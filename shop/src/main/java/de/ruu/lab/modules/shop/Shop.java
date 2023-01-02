@@ -65,10 +65,4 @@ public class Shop
 						.map(de.ruu.lab.modules.item.Item::toString)
 						.collect(Collectors.joining("\n"));
 	}
-
-	@SuppressWarnings("unused")
-	private void listen(@Observes ItemCreated event)
-	{
-		log.info("item created: {}", event.item());
-	}
 }
