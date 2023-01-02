@@ -14,6 +14,6 @@ class EditController extends DefaultFXCViewController implements EditService
 
 	@Override protected void initialize()
 	{
-		// empty implementation, do not call super.initialize() as that would throw ExceptionInInitializerError
+		txtFldName.requestFocus();
 	}
 }

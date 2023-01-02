@@ -9,7 +9,6 @@ import de.ruu.lab.modules.shop.ui.fx.item.edit.Edit;
 import de.ruu.lab.modules.shop.ui.fx.item.edit.EditService;
 import de.ruu.lib.fx.comp.DefaultFXCViewController;
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.enterprise.event.Observes;
 import jakarta.inject.Inject;
 import java.math.BigDecimal;
 import java.util.Optional;
@@ -24,6 +23,13 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 class ItemController extends DefaultFXCViewController
 {
+	/** visibility needs to be {@code package} to be proxyable not only by weld */
+	@ApplicationScoped
+	static class ItemCreatedDispatcher extends EventDispatcher<ItemCreated>
+	{ }
+
+	@Inject private ItemCreatedDispatcher dispatcher;
+
 	@Inject private ItemService itemService;
 	@Inject private Edit edit;
 
@@ -36,12 +42,19 @@ class ItemController extends DefaultFXCViewController
 	{
 		log.debug("initialising");
 
+		dispatcher.add(e -> onItemCreated(e));
+
 		btnCreate.setOnAction(e -> onCreate());
 		btnDelete.setOnAction(e -> onDelete());
 
 		TableViewConfigurator.configure(tblVw);
 
 		log.debug("initialised");
+	}
+
+	private void onItemCreated(ItemCreated itemCreated)
+	{
+		tblVw.getItems().add(Item.newInstance(itemCreated.item().name(), BigDecimal.ONE));
 	}
 
 	private void onCreate()
@@ -78,14 +91,5 @@ class ItemController extends DefaultFXCViewController
 			return Item.newInstance(editService.name(), new BigDecimal(editService.price()));
 		}
 		return null;
-	}
-
-	@ApplicationScoped private class Observer
-	{
-		private void listen(@Observes ItemCreated event)
-		{
-			log.info("received event - item created: {}, adding item to table", event.item());
-			tblVw.getItems().add(event.item());
-		}
 	}
 }
