@@ -1,8 +1,5 @@
 package de.ruu.lab.modules.inventory.internal;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import de.ruu.lab.modules.inventory.InventoryService;
 import de.ruu.lab.modules.inventory.Item;
 import de.ruu.lab.modules.inventory.ItemCreated;
@@ -15,6 +12,8 @@ import jakarta.persistence.TypedQuery;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
+import java.util.HashSet;
+import java.util.Set;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -28,7 +27,7 @@ public class InventoryServiceDefault implements InventoryService
 
 	@Override public Item create(Item item)
 	{
-		ItemDefault entity = new ItemDefault(item);
+		ItemDefault entity = new ItemDefault(item.name(), 0);
 
 		entityManager.getTransaction().begin();
 		entityManager.persist(entity);
@@ -68,7 +67,7 @@ public class InventoryServiceDefault implements InventoryService
 		Root<ItemDefault> rootEntry = criteriaQuery.from(ItemDefault.class);
 		criteriaQuery = criteriaQuery.select(rootEntry);
 		TypedQuery<ItemDefault> allQuery = entityManager.createQuery(criteriaQuery);
-		return new HashSet<Item>(allQuery.getResultList());
+		return new HashSet<>(allQuery.getResultList());
 	}
 
 	@SuppressWarnings("unused")

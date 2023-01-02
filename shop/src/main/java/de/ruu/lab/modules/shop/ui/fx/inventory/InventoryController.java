@@ -39,7 +39,7 @@ class InventoryController extends DefaultFXCViewController
 	{
 		log.debug("initialising");
 
-		dispatcher.add(e -> onItemCreated(e));
+		dispatcher.add(itemCreated -> onItemCreated(itemCreated));
 
 		btnUpdate.setOnAction(e -> onUpdate());
 

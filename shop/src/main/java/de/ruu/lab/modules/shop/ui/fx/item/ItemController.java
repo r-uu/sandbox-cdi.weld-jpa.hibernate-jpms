@@ -42,7 +42,7 @@ class ItemController extends DefaultFXCViewController
 	{
 		log.debug("initialising");
 
-		dispatcher.add(e -> onItemCreated(e));
+		dispatcher.add(itemCreated -> onItemCreated(itemCreated));
 
 		btnCreate.setOnAction(e -> onCreate());
 		btnDelete.setOnAction(e -> onDelete());

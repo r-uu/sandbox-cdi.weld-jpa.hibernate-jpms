@@ -23,15 +23,13 @@ public class ItemDefault implements Item
 	private BigDecimal price;
 
 	/** required by jpa */
-	ItemDefault() { }
+	protected ItemDefault() { }
 
 	public ItemDefault(String name, BigDecimal price)
 	{
 		this.name  = name;
 		this.price = price;
 	}
-
-	public ItemDefault(Item item) { this(item.name(), item.price()); }
 
 	@Override public Long id() { return id; }
 

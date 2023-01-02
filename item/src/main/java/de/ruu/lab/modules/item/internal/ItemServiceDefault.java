@@ -1,20 +1,18 @@
 package de.ruu.lab.modules.item.internal;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import de.ruu.lab.modules.item.Item;
 import de.ruu.lab.modules.item.ItemCreated;
 import de.ruu.lab.modules.item.ItemService;
 import de.ruu.lab.modules.item.ModuleItem;
 import jakarta.enterprise.event.Event;
-import jakarta.enterprise.event.Observes;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
+import java.util.HashSet;
+import java.util.Set;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -23,12 +21,12 @@ public class ItemServiceDefault implements ItemService
 	@Inject
 	@ModuleItem
 	private EntityManager entityManager;
-	
+
 	@Inject private Event<ItemCreated> event;
 
 	@Override public Item create(Item item)
 	{
-		ItemDefault entity = new ItemDefault(item);
+		ItemDefault entity = new ItemDefault(item.name(), item.price());
 
 		entityManager.getTransaction().begin();
 		entityManager.persist(entity);
@@ -52,8 +50,7 @@ public class ItemServiceDefault implements ItemService
 		return entity;
 	}
 
-	@Override
-	public void delete(Item item)
+	@Override public void delete(Item item)
 	{
 		ItemDefault entity = entityManager.find(ItemDefault.class, item.id());
 
@@ -70,6 +67,6 @@ public class ItemServiceDefault implements ItemService
 		Root<ItemDefault> rootEntry = criteriaQuery.from(ItemDefault.class);
 		criteriaQuery = criteriaQuery.select(rootEntry);
 		TypedQuery<ItemDefault> allQuery = entityManager.createQuery(criteriaQuery);
-		return new HashSet<Item>(allQuery.getResultList());
+		return new HashSet<>(allQuery.getResultList());
 	}
 }

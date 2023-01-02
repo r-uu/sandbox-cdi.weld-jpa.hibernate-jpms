@@ -22,7 +22,7 @@ public class ItemDefault implements Item
 	private long   stockQuantity;
 
 	/** required by jpa */
-	ItemDefault() { }
+	protected ItemDefault() { }
 
 	public ItemDefault(String name, long stockQuantity)
 	{
@@ -30,9 +30,9 @@ public class ItemDefault implements Item
 		this.stockQuantity = stockQuantity;
 	}
 
-	public ItemDefault(Item item)
+	public ItemDefault(de.ruu.lab.modules.item.Item item)
 	{
-		this(item.name(), item.stockQuantity());
+		this(item.name(), 0);
 		id = item.id();
 	}
 
