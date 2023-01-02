@@ -9,4 +9,5 @@ public interface Item
 	long stockQuantity();
 
 	static Item newInstance(String name, long stockQuantity) { return new ItemDefault(name, stockQuantity); }
+	static Item newInstance(Item item) { return new ItemDefault(item); }
 }

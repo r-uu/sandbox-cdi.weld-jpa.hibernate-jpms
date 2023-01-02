@@ -54,7 +54,7 @@ class ItemController extends DefaultFXCViewController
 
 	private void onItemCreated(ItemCreated itemCreated)
 	{
-		tblVw.getItems().add(Item.newInstance(itemCreated.item().name(), BigDecimal.ONE));
+		tblVw.getItems().add(Item.newInstance(itemCreated.item()));
 	}
 
 	private void onCreate()

@@ -50,7 +50,7 @@ class InventoryController extends DefaultFXCViewController
 
 	private void onItemCreated(ItemCreated itemCreated)
 	{
-		tblVw.getItems().add(Item.newInstance(itemCreated.item().name(), 0));
+		tblVw.getItems().add(Item.newInstance(itemCreated.item()));
 	}
 
 	private void onUpdate()
