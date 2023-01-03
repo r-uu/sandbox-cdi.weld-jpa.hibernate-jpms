@@ -25,8 +25,7 @@ class ItemController extends DefaultFXCViewController
 {
 	/** visibility needs to be {@code package} to be proxyable not only by weld */
 	@ApplicationScoped
-	static class ItemCreatedDispatcher extends EventDispatcher<ItemCreated>
-	{ }
+	static class ItemCreatedDispatcher extends EventDispatcher<ItemCreated> { }
 
 	@Inject private ItemCreatedDispatcher dispatcher;
 
@@ -54,7 +53,7 @@ class ItemController extends DefaultFXCViewController
 
 	private void onItemCreated(ItemCreated itemCreated)
 	{
-		tblVw.getItems().add(Item.newInstance(itemCreated.item()));
+		tblVw.getItems().add(itemCreated.item());
 	}
 
 	private void onCreate()

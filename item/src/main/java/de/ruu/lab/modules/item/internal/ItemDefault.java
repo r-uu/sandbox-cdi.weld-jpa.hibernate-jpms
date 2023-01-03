@@ -34,6 +34,8 @@ public class ItemDefault implements Item
 	@Override public Long id() { return id; }
 
 	@Override public String name() { return getName(); }
+	@Override public void name(String name) { this.name = name; }
 
 	@Override public BigDecimal price() { return getPrice(); }
+	@Override public void price(BigDecimal price) { this.price = price; }
 }

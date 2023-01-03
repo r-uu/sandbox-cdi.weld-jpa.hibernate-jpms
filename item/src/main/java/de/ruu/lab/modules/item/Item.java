@@ -6,9 +6,12 @@ import java.math.BigDecimal;
 public interface Item
 {
 	Long id();
+
 	String name();
+	void name(String name);
+
 	BigDecimal price();
+	void price(BigDecimal price);
 
 	static Item newInstance(String name, BigDecimal price) { return new ItemDefault(name, price); }
-	static Item newInstance(Item item) { return new ItemDefault(item); }
 }
