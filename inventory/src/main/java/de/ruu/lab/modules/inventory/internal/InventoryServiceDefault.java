@@ -4,8 +4,9 @@ import de.ruu.lab.modules.inventory.InventoryService;
 import de.ruu.lab.modules.inventory.Item;
 import de.ruu.lab.modules.inventory.ItemCreated;
 import de.ruu.lab.modules.inventory.ModuleInventory;
+import jakarta.annotation.PostConstruct;
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.event.Event;
-import jakarta.enterprise.event.Observes;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
@@ -19,11 +20,23 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class InventoryServiceDefault implements InventoryService
 {
+	/** visibility needs to be {@code package} to be proxyable not only by weld */
+	@ApplicationScoped
+	static class ItemCreatedDispatcher extends EventDispatcher<de.ruu.lab.modules.item.ItemCreated> { }
+
+	@Inject private ItemCreatedDispatcher dispatcher;
+
 	@Inject
 	@ModuleInventory
 	private EntityManager entityManager;
 
 	@Inject private Event<ItemCreated> event;
+
+	@PostConstruct
+	private void postConstruct()
+	{
+		dispatcher.add(itemCreated -> onItemCreated(itemCreated));
+	}
 
 	@Override public Item create(Item item)
 	{
@@ -71,10 +84,10 @@ public class InventoryServiceDefault implements InventoryService
 	}
 
 	@SuppressWarnings("unused")
-	private void listen(@Observes ItemCreated event)
+	private void onItemCreated(de.ruu.lab.modules.item.ItemCreated itemCreated)
 	{
-		log.info("item created: {}", event.item() + ", updating inventory");
-		Item item = create(Item.newInstance(event.item().name(), 0L));
-		log.info("item created: {}",       item   + ", updated  inventory");
+		log.info("item created: {}", itemCreated.item() + ", updating inventory");
+		Item item = create(Item.newInstance(itemCreated.item().name(), 0L));
+		log.info("item created: {}", item               + ", updated  inventory");
 	}
 }

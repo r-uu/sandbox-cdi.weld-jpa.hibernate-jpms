@@ -10,8 +10,8 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>item</module>
         <module>inventory</module>
+        <module>item</module>
         <module>shop</module>
     </modules>
 

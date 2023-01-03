@@ -78,7 +78,9 @@ class ItemController extends DefaultFXCViewController
 
 	private void onDelete()
 	{
-		itemService.delete(tblVw.getSelectionModel().getSelectedItem());
+		Item selectedItem = tblVw.getSelectionModel().getSelectedItem();
+		itemService.delete(selectedItem);
+		tblVw.getItems().remove(selectedItem);
 	}
 
 	private Item dialogResultConverter(ButtonType btn, Edit edit)

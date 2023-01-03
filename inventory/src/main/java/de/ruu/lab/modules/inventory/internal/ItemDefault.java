@@ -39,6 +39,8 @@ public class ItemDefault implements Item
 	public Long id() { return id; }
 
 	@Override public String name() { return getName(); }
+	@Override public void name(String name) { this.name = name;}
 
 	@Override public long stockQuantity() { return getStockQuantity(); }
+	@Override public void stockQuantity(long stockQuantity) { this.stockQuantity = stockQuantity; }
 }

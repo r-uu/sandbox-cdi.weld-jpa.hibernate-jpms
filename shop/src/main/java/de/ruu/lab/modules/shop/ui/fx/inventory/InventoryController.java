@@ -4,7 +4,7 @@ import static javafx.scene.control.ButtonBar.ButtonData.OK_DONE;
 
 import de.ruu.lab.modules.inventory.InventoryService;
 import de.ruu.lab.modules.inventory.Item;
-import de.ruu.lab.modules.item.ItemCreated;
+import de.ruu.lab.modules.inventory.ItemCreated;
 import de.ruu.lab.modules.shop.ui.fx.inventory.edit.Edit;
 import de.ruu.lab.modules.shop.ui.fx.inventory.edit.EditService;
 import de.ruu.lib.fx.comp.DefaultFXCViewController;
@@ -50,7 +50,7 @@ class InventoryController extends DefaultFXCViewController
 
 	private void onItemCreated(ItemCreated itemCreated)
 	{
-		tblVw.getItems().add(Item.newInstance(itemCreated.item()));
+		tblVw.getItems().add(itemCreated.item());
 	}
 
 	private void onUpdate()
@@ -73,8 +73,13 @@ class InventoryController extends DefaultFXCViewController
 
 		if (optional.isPresent())
 		{
+			Item modifiedItem = optional.get();
+
+			item.name(modifiedItem.name());
+			item.stockQuantity(modifiedItem.stockQuantity());
+
 			tblVw.getItems().remove(item);
-			tblVw.getItems().add(inventoryService.update(optional.get()));
+			tblVw.getItems().add(inventoryService.update(item));
 		}
 	}
 
